@@ -1,0 +1,114 @@
+//
+//  JanDan-Prefix.pch
+//  myJanDan
+//
+//  Created by mervin on 2017/8/14.
+//  Copyright © 2017年 浅浅浅. All rights reserved.
+//
+
+#import <Availability.h>
+
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Masonry.h>
+#import <YYKit/YYKit.h>
+#import <RDVTabBarController.h>
+#import "SVPullToRefresh.h"
+#import "UIViewController+JGProgressHUD.h"
+#import "UIColor+expanded.h"
+#import "UIImage+Common.h"
+#import "JDRequestProtocol.h"
+
+#endif
+
+
+//版本号
+#define JD_Version      [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+#define JD_VersionBuild [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]
+
+//常用变量
+#define DebugLog(s, ...) NSLog(@"%s(%d): %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+
+#define loading_Title   @"加载中…"
+#define posts_Title     @"新鲜事"
+#define pic_Title       @"无聊图"
+#define xxoo_Title      @"妹子图"
+#define duan_Title      @"段子"
+
+#define dateFormat      @"yyyy-MM-dd HH:mm:ss"
+
+#define kScreen_Bounds  [UIScreen mainScreen].bounds
+#define kScreen_Height  [UIScreen mainScreen].bounds.size.height
+#define kScreen_Width   [UIScreen mainScreen].bounds.size.width
+
+#define kDevice_Is_iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
+// Color
+#define kColorCellBG    [UIColor colorWithHexString:@"0xF8F8F8"]
+#define kColorDate      [UIColor colorWithHexString:@"0x999999"]
+#define kColorBack      [UIColor colorWithHexString:@"#364F6B"]
+#define kColorBg        [UIColor colorWithHexString:@"#F5F5F5"]
+#define kColorNavTitle  [UIColor colorWithHexString:@"0x323A45"]
+#define kColorNavBG     [UIColor colorWithHexString:@"0xF2F2F2"]
+#define kColorEEE       [UIColor colorWithHexString:@"0xEEEEEE"]
+#define kColorOO        [UIColor colorWithHexString:@"0xF00000"]
+#define kColorXX        [UIColor colorWithHexString:@"0x00F000"]
+#define kColorSub       [UIColor colorWithHexString:@"0x9A9B94"]
+
+
+// Font
+#define FontOfSize(size)        [UIFont systemFontOfSize:size]
+#define BoldFontOfSize(size)    [UIFont boldSystemFontOfSize:size]
+#define SizeT1  18
+#define SizeT2  16
+#define SizeT3  14
+#define SizeT4  12
+
+///=============================================
+/// @name Weak Object
+///=============================================
+#pragma mark - Weak Object
+
+/**
+ * @code
+ * ESWeak(imageView, weakImageView);
+ * [self testBlock:^(UIImage *image) {
+ *         ESStrong(weakImageView, strongImageView);
+ *         strongImageView.image = image;
+ * }];
+ *
+ * // `ESWeak_(imageView)` will create a var named `weak_imageView`
+ * ESWeak_(imageView);
+ * [self testBlock:^(UIImage *image) {
+ *         ESStrong_(imageView);
+ * 	_imageView.image = image;
+ * }];
+ *
+ * // weak `self` and strong `self`
+ * ESWeakSelf;
+ * [self testBlock:^(UIImage *image) {
+ *         ESStrongSelf;
+ *         _self.image = image;
+ * }];
+ * @endcode
+ */
+
+#define ESWeak(var, weakVar) __weak __typeof(&*var) weakVar = var
+#define ESStrong_DoNotCheckNil(weakVar, _var) __typeof(&*weakVar) _var = weakVar
+#define ESStrong(weakVar, _var) ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
+
+#define ESWeak_(var) ESWeak(var, weak_##var);
+#define ESStrong_(var) ESStrong(weak_##var, _##var);
+
+/** defines a weak `self` named `__weakSelf` */
+#define ESWeakSelf      ESWeak(self, __weakSelf);
+/** defines a strong `self` named `_self` from `__weakSelf` */
+#define ESStrongSelf    ESStrong(__weakSelf, _self);

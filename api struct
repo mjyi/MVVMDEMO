@@ -1,0 +1,32 @@
+#### 无聊图，妹子图，的吐槽：（评论）
+
+http://i.jandan.net/tucao/comment_ID  
+e.g : http://i.jandan.net/tucao/3551931
+
+return  json:
+
+```json
+{
+"code": 0,
+"hot_tucao": [],
+"tucao": [
+{
+"comment_ID": "533873",
+"comment_post_ID": "3551895",
+"comment_author": "十一",
+"comment_date": "2017-09-03 16:53:30",
+"comment_content": "地上不会有小虫子么",
+"comment_parent": "0",
+"comment_reply_ID": "0",
+"vote_positive": "1",
+"vote_negative": "0",
+"comment_date_int": 1504428810,
+"is_tip_user": 1,
+"is_jandan_user": 0
+}
+],
+"has_next_page": false
+}
+
+
+```
