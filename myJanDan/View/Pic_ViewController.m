@@ -40,20 +40,6 @@
     
     [[self.viewModel.didSelected.executionSignals switchToLatest] subscribeNext:^(PicModel *item) {
         DebugLog(@"didSelected: %@",item);
-        
-    
-        //        @strongify(self)
-//        PostDetailViewModel *dviewModel = [[PostDetailViewModel alloc] init];
-//        //
-//        Post_DetailViewController *detail = [[Post_DetailViewController alloc] initWithViewModel:dviewModel];
-//        
-//        [[detail rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
-//            [dviewModel.requestRemoteDataCommand execute:item];
-//            
-//        }];
-//        [self.navigationController pushViewController:detail
-//                                             animated:YES];
-        
     }];
     
 }

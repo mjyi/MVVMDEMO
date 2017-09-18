@@ -19,12 +19,6 @@
 
 - (void)initialize {
     self.title = @"设置";
-//    @weakify(self)
-//    self.loadSettingsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-//        @strongify(self)
-//        self.cacheString = [self cacheString];
-//        return nil;
-//    }];
 
 }
 

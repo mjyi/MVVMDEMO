@@ -10,7 +10,8 @@ target 'myJanDan' do
   pod 'YYKit'
   pod 'FLEX', '~> 2.4.0'
   pod 'DZNEmptyDataSet', '~> 1.8.1'
-
+  pod 'GRMustache', '~> 7.3.2'
+  
   target 'myJanDanTests' do
     inherit! :search_paths
 

@@ -56,10 +56,6 @@
             }];
         }];
     }];
-    
-    RAC(self, title) = [[self.requestRemoteDataCommand executing] map:^id(NSNumber *execting) {
-        return execting.boolValue ? loading_Title: posts_Title;
-    }];
 }
 
 - (id)fetchLocalData {

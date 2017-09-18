@@ -8,9 +8,10 @@
 
 #import "PostDetailViewModel.h"
 #import "PostDetailModel.h"
+#import <GRMustache.h>
+
 
 @interface PostDetailViewModel ()
-
 
 @end
 
@@ -18,7 +19,7 @@
 
 
 - (void)initialize {
-    self.postDetail = [PostDetailModel new];
+    [super initialize];
     @weakify(self)      //TODO : concat local+remote
     self.requestRemoteDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self)
@@ -29,6 +30,7 @@
         }
         return [[signal map:^id(PostDetailModel *value) {
             self.title = value.post.title;
+            self.postDetail = value;
             return value;
         }] catch:^RACSignal *(NSError *error) {
             return [RACSignal error:error];
@@ -36,8 +38,6 @@
     }];
     
 }
-
-
 
 /**
  根据id和slug请求数据  TODO: local store
@@ -51,6 +51,7 @@
         return [[[JDHTTPService postDetail_signalWithId:[param integerValue]] map:^id(NSDictionary *value) {
             //        NSDictionary *dict = value[@"post"];
             PostDetailModel *postDetail = [PostDetailModel modelWithJSON:value];
+            
             return postDetail;
         }] catch:^RACSignal *(NSError *error) {
             return [RACSignal error:error];

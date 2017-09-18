@@ -12,7 +12,6 @@
 @interface PostDetailViewModel : JDViewModel
 
 @property (nonatomic, strong) PostDetailModel *postDetail;
-
 @property (nonatomic, strong) RACCommand *sourceCommand;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "JDBaseViewController.h"
+#import "JDViewModel.h"
 
 @interface JDBaseViewController ()
 
@@ -42,13 +43,23 @@
     
 }
 
-- (void)bindViewModel {}
+- (void)bindViewModel {
+    @weakify(self)
+    [RACObserve(self.viewModel, title) subscribeNext:^(NSString *title) {
+        @strongify(self)
+        self.title = title;
+    }];
+}
 
 - (instancetype)initWithViewModel:(JDViewModel *)viewModel {
     if (self = [super init]) {
         self.viewModel = viewModel;
     }
     return self;
+}
+
+- (void)dealloc {
+    DebugLog(@" <<<< %@ >>>>", self.className);
 }
 
 @end

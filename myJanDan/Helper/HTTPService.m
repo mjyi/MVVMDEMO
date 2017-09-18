@@ -68,7 +68,7 @@
         MKNetworkRequest *request = [[MKNetworkRequest alloc] initWithURLString:URLString params:nil bodyData:nil httpMethod:@"GET"];
         @strongify(self)
         [request addCompletionHandler:^(MKNetworkRequest *completedRequest) {
-            DebugLog(@"%@",completedRequest.responseAsJSON);
+//            DebugLog(@"%@",completedRequest.responseAsJSON);
             NSDictionary *dict = (NSDictionary *)completedRequest.responseAsJSON;
             if (completedRequest.error) {
                 

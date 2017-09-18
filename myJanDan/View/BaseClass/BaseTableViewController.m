@@ -114,16 +114,6 @@
          @strongify(self)
          [self.tableView reloadData];
      }];
-
-//    [self.viewModel.requestRemoteDataCommand.errors subscribeNext:^(NSError *x) {
-//        @strongify(self)
-//        [self showErrorHUD:x.domain];
-//    }];
-    
-    [RACObserve(self.viewModel, title) subscribeNext:^(NSString *title) {
-        @strongify(self)
-        self.title = title;
-    }];
 }
 
 

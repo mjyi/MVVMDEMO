@@ -58,6 +58,7 @@
 		D87BFBB11F41A53400A988EA /* MKNetworkHost.m in Sources */ = {isa = PBXBuildFile; fileRef = D87BFBA21F41A53400A988EA /* MKNetworkHost.m */; };
 		D87BFBB21F41A53400A988EA /* MKNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D87BFBA51F41A53400A988EA /* MKNetworkRequest.m */; };
 		D87BFBB31F41A53400A988EA /* MKObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D87BFBA71F41A53400A988EA /* MKObject.m */; };
+		D87E0F421F6EB00D00C06D11 /* www in Resources */ = {isa = PBXBuildFile; fileRef = D87E0F411F6EB00D00C06D11 /* www */; };
 		D88974681F53AF33002DB8A4 /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D88974671F53AF33002DB8A4 /* UIView+Common.m */; };
 		D88974711F541F8A002DB8A4 /* RequestRemoteSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D88974701F541F8A002DB8A4 /* RequestRemoteSize.m */; };
 		D8C194741F57BA0800546648 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C194721F57BA0800546648 /* SettingCell.m */; };
@@ -69,7 +70,6 @@
 		D8D2CDF41F511EB8005EAA6B /* nav_page_unselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D801B3CE1F5119B70099813D /* nav_page_unselected@3x.png */; };
 		D8D5E3081F6140C4007505A7 /* PicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5E3071F6140C4007505A7 /* PicDetailModel.m */; };
 		D8D5E30B1F6149DA007505A7 /* PicDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5E30A1F6149DA007505A7 /* PicDetailViewModel.m */; };
-		D8D5E30D1F61637E007505A7 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = D8D5E30C1F61637E007505A7 /* style.css */; };
 		D8D8711F1F60ECA400F25005 /* UIViewController+JGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D8711E1F60ECA400F25005 /* UIViewController+JGProgressHUD.m */; };
 		D8D871221F61383900F25005 /* TucaoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D871211F61383900F25005 /* TucaoModel.m */; };
 		D8E4C82D1F653F9400A4FF63 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E4C82C1F653F9400A4FF63 /* ArticleDetailViewController.m */; };
@@ -204,6 +204,7 @@
 		D87BFBA51F41A53400A988EA /* MKNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkRequest.m; sourceTree = "<group>"; };
 		D87BFBA61F41A53400A988EA /* MKObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKObject.h; sourceTree = "<group>"; };
 		D87BFBA71F41A53400A988EA /* MKObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKObject.m; sourceTree = "<group>"; };
+		D87E0F411F6EB00D00C06D11 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		D88974661F53AF33002DB8A4 /* UIView+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Common.h"; sourceTree = "<group>"; };
 		D88974671F53AF33002DB8A4 /* UIView+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Common.m"; sourceTree = "<group>"; };
 		D889746F1F541F8A002DB8A4 /* RequestRemoteSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestRemoteSize.h; sourceTree = "<group>"; };
@@ -215,7 +216,6 @@
 		D8D5E3071F6140C4007505A7 /* PicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicDetailModel.m; sourceTree = "<group>"; };
 		D8D5E3091F6149DA007505A7 /* PicDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicDetailViewModel.h; sourceTree = "<group>"; };
 		D8D5E30A1F6149DA007505A7 /* PicDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicDetailViewModel.m; sourceTree = "<group>"; };
-		D8D5E30C1F61637E007505A7 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		D8D8711D1F60ECA400F25005 /* UIViewController+JGProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JGProgressHUD.h"; sourceTree = "<group>"; };
 		D8D8711E1F60ECA400F25005 /* UIViewController+JGProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JGProgressHUD.m"; sourceTree = "<group>"; };
 		D8D871201F61383900F25005 /* TucaoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TucaoModel.h; sourceTree = "<group>"; };
@@ -480,12 +480,12 @@
 				D8769FFC1F41D5DE00F22992 /* PostViewModel.m */,
 				D83E59EC1F4AB1230011B0AA /* Pic_ViewModel.h */,
 				D83E59ED1F4AB1230011B0AA /* Pic_ViewModel.m */,
+				D8762BA91F45B4CB0055EB7A /* PostDetailViewModel.h */,
+				D8762BAA1F45B4CB0055EB7A /* PostDetailViewModel.m */,
 				D8D5E3091F6149DA007505A7 /* PicDetailViewModel.h */,
 				D8D5E30A1F6149DA007505A7 /* PicDetailViewModel.m */,
 				D876A02B1F43DFCF00F22992 /* PostsItemViewModel.h */,
 				D876A02C1F43DFCF00F22992 /* PostsItemViewModel.m */,
-				D8762BA91F45B4CB0055EB7A /* PostDetailViewModel.h */,
-				D8762BAA1F45B4CB0055EB7A /* PostDetailViewModel.m */,
 				D83C95961F55944200A62242 /* MeSettingViewModel.h */,
 				D83C95971F55944200A62242 /* MeSettingViewModel.m */,
 				D8EB1E451F580AAC00861046 /* SettingCellViewModel.h */,
@@ -497,7 +497,7 @@
 		D87BFB651F41564800A988EA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				D8D5E30C1F61637E007505A7 /* style.css */,
+				D87E0F411F6EB00D00C06D11 /* www */,
 				D801B3CA1F5119AE0099813D /* images */,
 			);
 			path = Resource;
@@ -678,7 +678,7 @@
 				D865EB681F40A4190000F6B8 /* LaunchScreen.storyboard in Resources */,
 				D8E4C8321F65408600A4FF63 /* PostCommentCell.xib in Resources */,
 				D865EB651F40A4190000F6B8 /* Assets.xcassets in Resources */,
-				D8D5E30D1F61637E007505A7 /* style.css in Resources */,
+				D87E0F421F6EB00D00C06D11 /* www in Resources */,
 				D8C194751F57BA0800546648 /* SettingCell.xib in Resources */,
 				D83E5A2D1F4D4E960011B0AA /* Pic_Cell.xib in Resources */,
 				D876A05C1F442C3A00F22992 /* PostItemCell.xib in Resources */,
@@ -702,13 +702,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-myJanDanTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7EE97F9D8FC6F51632497867 /* [CP] Copy Pods Resources */ = {
@@ -732,13 +735,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-myJanDan-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CE4CA79C8B24DC30981621E3 /* [CP] Embed Pods Frameworks */ = {
@@ -762,9 +768,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-myJanDan/Pods-myJanDan-resources.sh",
+				"${PODS_ROOT}/JGProgressHUD/JGProgressHUD/JGProgressHUD/JGProgressHUD Resources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
