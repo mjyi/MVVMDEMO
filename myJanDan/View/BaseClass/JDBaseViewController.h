@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JDViewModel.h"
 
-@class JDViewModel;
 @interface JDBaseViewController : UIViewController
 
 @property (nonatomic, strong, readonly)JDViewModel *viewModel;

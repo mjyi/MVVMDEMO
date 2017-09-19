@@ -7,7 +7,6 @@
 //
 
 #import "JDBaseViewController.h"
-#import "JDViewModel.h"
 
 @interface JDBaseViewController ()
 

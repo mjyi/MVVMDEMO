@@ -7,8 +7,6 @@
 //
 
 #import "DetailViewController.h"
-#import "DetailViewModel.h"
-
 
 @interface DetailViewController ()<WKNavigationDelegate,WKUIDelegate>
 
