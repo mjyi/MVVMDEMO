@@ -9,6 +9,8 @@
 #import "Pic_ViewController.h"
 #import "Pic_ViewModel.h"
 #import "Pic_Cell.h"
+#import "PicDetailViewModel.h"
+#import "PicDetail_ViewController.h"
 
 @interface Pic_ViewController ()
 
@@ -40,8 +42,20 @@
     
     [[self.viewModel.didSelected.executionSignals switchToLatest] subscribeNext:^(PicModel *item) {
         DebugLog(@"didSelected: %@",item);
+        PicDetailViewModel *pViewModel = [[PicDetailViewModel alloc] init];
+        PicDetailModel *dtt = [PicDetailModel new];
+        dtt.pic = item;
+        pViewModel.picDetail = dtt;
+        PicDetail_ViewController *dctrl = [[PicDetail_ViewController alloc] initWithViewModel:pViewModel];
+        
+        [[dctrl rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
+            [pViewModel.requestRemoteDataCommand execute:item];
+            
+        }];
+        [self.navigationController pushViewController:dctrl
+                                             animated:YES];
+        
     }];
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

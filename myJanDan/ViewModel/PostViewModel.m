@@ -12,16 +12,23 @@
 
 @interface PostViewModel ()
 
-@property (nonatomic, strong) RACSubject *errors;
-
 @end
 
 @implementation PostViewModel
 
 - (void) initialize {
     [super initialize];
+    self.title = posts_Title;
     self.page = 1;
-
+    @weakify(self)
+    [self.requestRemoteDataCommand.executing subscribeNext:^(NSNumber *x) {
+        @strongify(self)
+        if (x.boolValue) {
+            self.title = loading_Title;
+        } else {
+            self.title = posts_Title;
+        }
+     }];
 }
 
 

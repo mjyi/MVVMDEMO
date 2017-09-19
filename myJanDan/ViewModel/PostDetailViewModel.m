@@ -10,11 +10,6 @@
 #import "PostDetailModel.h"
 #import <GRMustache.h>
 
-
-@interface PostDetailViewModel ()
-
-@end
-
 @implementation PostDetailViewModel
 
 

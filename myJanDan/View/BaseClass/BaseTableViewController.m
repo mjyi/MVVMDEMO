@@ -79,6 +79,7 @@
              } error:^(NSError *error) {
                  @strongify(self)
                  [self.tableView.infiniteScrollingView stopAnimating];
+                 [self showErrorHUD:error.domain];
              } completed:^{
                  @strongify(self)
                  [self.tableView.infiniteScrollingView stopAnimating];

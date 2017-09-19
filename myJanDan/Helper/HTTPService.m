@@ -32,34 +32,78 @@
 
 - (RACSignal *)posts_signalWithPage:(NSInteger)page {
     NSString *url = [NSString stringWithFormat:@"%@%ld",kPostsURL, page];
-    return [self rac_signalWithURLString:url];
-    
+    RACSignal *signal = [self rac_signalWithURLString:url];
+    return [self requestStatusSignal:signal];
 }
 
 - (RACSignal *)postDetail_signalWithId:(NSInteger)ID {
     NSString *url = [NSString stringWithFormat:@"%@%ld",kPostById, ID];
-    return [self rac_signalWithURLString:url];
+    RACSignal *signal = [self rac_signalWithURLString:url];
+    return [self requestStatusSignal:signal];
     
 }
 
 - (RACSignal *)pic_signalWithPage:(NSInteger)page {
-    
     NSString *url = [NSString stringWithFormat:@"%@%ld", kPicURL, page];
-    return [self rac_signalWithURLString:url];
+    RACSignal *signal = [self rac_signalWithURLString:url];
+    return [self requestStatusSignal:signal];
 
 }
 
 - (RACSignal *)xxoo_signalWithPage:(NSInteger)page {
     NSString *url = [NSString stringWithFormat:@"%@%ld", kXXOOURL, page];
-    return [self rac_signalWithURLString:url];
+    RACSignal *signal = [self rac_signalWithURLString:url];
+    return [self requestStatusSignal:signal];
     
 }
 
 - (RACSignal *)duan_SignalWithPage:(NSInteger)page {
     NSString *url = [NSString stringWithFormat:@"%@%ld", kDuanURL, page];
-    return [self rac_signalWithURLString:url];
+    RACSignal *signal = [self rac_signalWithURLString:url];
+    return [self requestStatusSignal:signal];
     
 }
+
+// Code
+- (RACSignal *)tucao_SignalWithCommentID:(NSString *)commentID {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kTucaoURL, commentID];
+    return [self rac_signalWithURLString:url];
+}
+
+- (RACSignal *)requestStatusSignal:(RACSignal *)signal {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        RACDisposable *subscriptionDisposable = [signal subscribeNext:^(NSDictionary *dict) {
+            if ([dict[@"status"] isEqualToString:@"ok"]) {
+                [subscriber sendNext:dict];
+            } else {
+                [subscriber sendError:[NSError errorWithDomain:@"服务器返回失败" code:0 userInfo:nil]];
+            }
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [subscriptionDisposable dispose];
+        }];
+    }];
+}
+
+- (RACSignal *)requestCodeSignal:(RACSignal *)signal {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        RACDisposable *subscriptionDisposable = [signal subscribeNext:^(NSDictionary *dict) {
+            if (0 == [dict[@"code"] intValue]) {
+                [subscriber sendNext:dict];
+            } else {
+                [subscriber sendError:[NSError errorWithDomain:@"服务器返回失败" code:0 userInfo:nil]];
+            }
+        } completed:^{
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [subscriptionDisposable dispose];
+        }];
+    }];
+}
+
 
 #pragma mark - Privity method
 - (RACSignal *)rac_signalWithURLString:(NSString *)URLString {
@@ -68,20 +112,13 @@
         MKNetworkRequest *request = [[MKNetworkRequest alloc] initWithURLString:URLString params:nil bodyData:nil httpMethod:@"GET"];
         @strongify(self)
         [request addCompletionHandler:^(MKNetworkRequest *completedRequest) {
-//            DebugLog(@"%@",completedRequest.responseAsJSON);
-            NSDictionary *dict = (NSDictionary *)completedRequest.responseAsJSON;
+
             if (completedRequest.error) {
-                
                 [subscriber sendError:completedRequest.error];
-            } else if ([completedRequest.responseAsJSON[@"status"] isEqualToString:@"ok"]) {
-                
-                [subscriber sendNext:completedRequest.responseAsJSON];
-                [subscriber sendCompleted];
-            } else {
-                [subscriber sendError:[NSError errorWithDomain:[NSString stringWithFormat:@"Status:%@",dict[@"status"]]
-                                                          code:0
-                                                      userInfo:nil]];
+                return;
             }
+            [subscriber sendNext:completedRequest.responseAsJSON];
+            [subscriber sendCompleted];
         }];
         [self startRequest:request];
         

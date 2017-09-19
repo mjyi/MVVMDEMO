@@ -6,9 +6,9 @@
 //  Copyright © 2017年 浅浅浅. All rights reserved.
 //
 
-#import "JDBaseViewController.h"
+#import "DetailViewController.h"
 
-@interface Post_DetailViewController : JDBaseViewController
+@interface Post_DetailViewController : DetailViewController
 
 
 

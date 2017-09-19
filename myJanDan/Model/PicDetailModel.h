@@ -7,8 +7,9 @@
 //
 
 #import "BaseModel.h"
+#import "PicModel.h"
+#import "TucaoModel.h"
 
-@class PicModel, TucaoModel;
 @interface PicDetailModel : BaseModel
 
 @property (nonatomic, strong) PicModel *pic;

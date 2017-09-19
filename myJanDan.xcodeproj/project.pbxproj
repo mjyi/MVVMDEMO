@@ -72,7 +72,8 @@
 		D8D5E30B1F6149DA007505A7 /* PicDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D5E30A1F6149DA007505A7 /* PicDetailViewModel.m */; };
 		D8D8711F1F60ECA400F25005 /* UIViewController+JGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D8711E1F60ECA400F25005 /* UIViewController+JGProgressHUD.m */; };
 		D8D871221F61383900F25005 /* TucaoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D871211F61383900F25005 /* TucaoModel.m */; };
-		D8E4C82D1F653F9400A4FF63 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E4C82C1F653F9400A4FF63 /* ArticleDetailViewController.m */; };
+		D8E0DA371F70096800E8663C /* PicDetail_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E0DA361F70096800E8663C /* PicDetail_ViewController.m */; };
+		D8E0DA3A1F70116D00E8663C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E0DA391F70116D00E8663C /* DetailViewController.m */; };
 		D8E4C8311F65408600A4FF63 /* PostCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E4C82F1F65408600A4FF63 /* PostCommentCell.m */; };
 		D8E4C8321F65408600A4FF63 /* PostCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E4C8301F65408600A4FF63 /* PostCommentCell.xib */; };
 		D8EB1E441F57E04200861046 /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EB1E431F57E04200861046 /* SettingsHelper.m */; };
@@ -220,8 +221,10 @@
 		D8D8711E1F60ECA400F25005 /* UIViewController+JGProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JGProgressHUD.m"; sourceTree = "<group>"; };
 		D8D871201F61383900F25005 /* TucaoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TucaoModel.h; sourceTree = "<group>"; };
 		D8D871211F61383900F25005 /* TucaoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TucaoModel.m; sourceTree = "<group>"; };
-		D8E4C82B1F653F9400A4FF63 /* ArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailViewController.h; sourceTree = "<group>"; };
-		D8E4C82C1F653F9400A4FF63 /* ArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailViewController.m; sourceTree = "<group>"; };
+		D8E0DA351F70096800E8663C /* PicDetail_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicDetail_ViewController.h; sourceTree = "<group>"; };
+		D8E0DA361F70096800E8663C /* PicDetail_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicDetail_ViewController.m; sourceTree = "<group>"; };
+		D8E0DA381F70116D00E8663C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		D8E0DA391F70116D00E8663C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		D8E4C82E1F65408600A4FF63 /* PostCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentCell.h; sourceTree = "<group>"; };
 		D8E4C82F1F65408600A4FF63 /* PostCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentCell.m; sourceTree = "<group>"; };
 		D8E4C8301F65408600A4FF63 /* PostCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCommentCell.xib; sourceTree = "<group>"; };
@@ -456,12 +459,14 @@
 				D87BFB721F41854200A988EA /* JDRootTabViewController.m */,
 				D87BFB8A1F41A42300A988EA /* Posts_RootViewController.h */,
 				D87BFB8B1F41A42300A988EA /* Posts_RootViewController.m */,
-				D8762BA61F45B1D00055EB7A /* Post_DetailViewController.h */,
-				D8762BA71F45B1D00055EB7A /* Post_DetailViewController.m */,
-				D8E4C82B1F653F9400A4FF63 /* ArticleDetailViewController.h */,
-				D8E4C82C1F653F9400A4FF63 /* ArticleDetailViewController.m */,
 				D83E59E91F4AAF8A0011B0AA /* Pic_ViewController.h */,
 				D83E59EA1F4AAF8A0011B0AA /* Pic_ViewController.m */,
+				D8E0DA381F70116D00E8663C /* DetailViewController.h */,
+				D8E0DA391F70116D00E8663C /* DetailViewController.m */,
+				D8762BA61F45B1D00055EB7A /* Post_DetailViewController.h */,
+				D8762BA71F45B1D00055EB7A /* Post_DetailViewController.m */,
+				D8E0DA351F70096800E8663C /* PicDetail_ViewController.h */,
+				D8E0DA361F70096800E8663C /* PicDetail_ViewController.m */,
 				D83C95931F55941000A62242 /* Me_RootViewController.h */,
 				D83C95941F55941000A62242 /* Me_RootViewController.m */,
 			);
@@ -820,6 +825,7 @@
 				D865EB5D1F40A4190000F6B8 /* AppDelegate.m in Sources */,
 				D87BFBA91F41A53400A988EA /* NSDate+RFC1123.m in Sources */,
 				D87BFB7F1F419FCB00A988EA /* UIColor+expanded.m in Sources */,
+				D8E0DA371F70096800E8663C /* PicDetail_ViewController.m in Sources */,
 				D876A0311F43EE8D00F22992 /* JDViewModel.m in Sources */,
 				D8762BD91F4825750055EB7A /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				D8762BE21F4829E10055EB7A /* NSString+Addition.m in Sources */,
@@ -828,7 +834,6 @@
 				D87BFBAD1F41A53400A988EA /* NSString+MKNKAdditions.m in Sources */,
 				D8EB1E471F580AAC00861046 /* SettingCellViewModel.m in Sources */,
 				D87BFBB21F41A53400A988EA /* MKNetworkRequest.m in Sources */,
-				D8E4C82D1F653F9400A4FF63 /* ArticleDetailViewController.m in Sources */,
 				D88974681F53AF33002DB8A4 /* UIView+Common.m in Sources */,
 				D83C95951F55941000A62242 /* Me_RootViewController.m in Sources */,
 				D87BFB891F41A3CC00A988EA /* JDBaseViewController.m in Sources */,
@@ -849,6 +854,7 @@
 				D8769FFD1F41D5DE00F22992 /* PostViewModel.m in Sources */,
 				D8E4C8311F65408600A4FF63 /* PostCommentCell.m in Sources */,
 				D87BFB881F41A3CC00A988EA /* JDBaseNavigationController.m in Sources */,
+				D8E0DA3A1F70116D00E8663C /* DetailViewController.m in Sources */,
 				D87BFBB31F41A53400A988EA /* MKObject.m in Sources */,
 				D83E59FA1F4AC6AF0011B0AA /* BaseModel.m in Sources */,
 				D8762BAB1F45B4CB0055EB7A /* PostDetailViewModel.m in Sources */,

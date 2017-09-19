@@ -7,7 +7,11 @@
 //
 
 #import "JDViewModel.h"
+#import "PicDetailModel.h"
 
 @interface PicDetailViewModel : JDViewModel
+
+@property (nonatomic, strong) PicDetailModel *picDetail;
+@property (nonatomic, strong) RACCommand *sourceCommand;
 
 @end

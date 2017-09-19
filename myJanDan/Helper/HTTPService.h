@@ -23,7 +23,7 @@ static NSString * const kXXOOURL = @"http://i.jandan.net/?oxwlxojflwblxbsapi=jan
 
 static NSString * const kDuanURL = @"http://i.jandan.net/?oxwlxojflwblxbsapi=jandan.get_duan_comments&page=";
 
-
+static NSString * const kTucaoURL = @"http://i.jandan.net/tucao/";
 
 @interface HTTPService : MKNetworkHost
 
@@ -57,6 +57,9 @@ static NSString * const kDuanURL = @"http://i.jandan.net/?oxwlxojflwblxbsapi=jan
   段子
  */
 - (RACSignal *)duan_SignalWithPage:(NSInteger)page;
+
+
+- (RACSignal *)tucao_SignalWithCommentID:(NSString *)commentID;
 
 @end
 
