@@ -49,6 +49,10 @@
         @strongify(self)
         self.title = title;
     }];
+    [self.viewModel.requestRemoteDataCommand.errors subscribeNext:^(NSError *x) {
+        @strongify(self)
+        [self showErrorHUD:x.domain];
+    }];
 }
 
 - (instancetype)initWithViewModel:(JDViewModel *)viewModel {
