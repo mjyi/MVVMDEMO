@@ -1,5 +1,5 @@
 //
-//  RequestRemoteSize.h
+//  RequestRemoteSizeHost.h
 //  myJanDan
 //
 //  Created by mervin on 2017/8/28.
@@ -8,7 +8,7 @@
 
 #import "MKNetworkHost.h"
 
-@interface RequestRemoteSize : MKNetworkHost
+@interface RequestRemoteSizeHost : MKNetworkHost
 
 - (RACSignal *)requsetRemoteSize:(NSString *)imgURL;
 

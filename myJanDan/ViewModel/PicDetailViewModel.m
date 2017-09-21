@@ -15,7 +15,8 @@
 - (void)initialize {
     [super initialize];
     @weakify(self)
-    self.requestRemoteDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(PicModel *input) {
+    
+    self.sourceCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(PicModel *input) {
         @strongify(self)
         RACSignal *signal = [self requestRemoteDataSignalWithParam:input.comment_ID];
         return [[signal map:^id(id value) {
@@ -24,7 +25,7 @@
             return pDetail;
         }] catch:^RACSignal *(NSError *error) {
             return [RACSignal error:error];
-        }];    
+        }];
     }];
     
 }
@@ -36,15 +37,16 @@
  @return request Signal
  */
 - (RACSignal *)requestRemoteDataSignalWithParam:(id)param {
-    
+    @weakify(self)
     return [[[JDHTTPService tucao_SignalWithCommentID:param] map:^id(NSDictionary *value) {
-        
-        return value;
+        @strongify(self)
+        PicDetailModel *detail = [PicDetailModel modelWithDictionary:value];
+        detail.pic = self.picDetail.pic;
+        self.picDetail = detail;
+        return detail;
     }] catch:^RACSignal *(NSError *error) {
         return [RACSignal error:error];
     }];
-    return [RACSignal empty];
-    
 }
 
 

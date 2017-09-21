@@ -1,7 +1,22 @@
-# iOS 煎蛋客户端 Demo
+## iOS JANDAN.net Demo
 
-初学RAC，练手之作。
+> RAC + MVVM practice
 
-接口来源网络。
+#### Dependencies
 
-使用`Cocoapods`管理第三方库。 
+- YYKit
+- ReactiveCocoa
+- Masonry
+- MKNetworkKit
+- ...
+
+#### TODO
+- [x] demo框架构建完成
+- [ ] 渲染评论htmlString
+- [ ] 本地缓存
+- [ ] 将WKWebView加载图片缓存
+- [ ] titleView 作加载提示
+- [ ] EmptyView
+- [ ] 封装常用控件
+
+![](screenshot.png)

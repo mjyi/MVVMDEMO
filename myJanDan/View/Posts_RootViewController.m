@@ -27,10 +27,6 @@
 
 @synthesize viewModel;
 
-- (UIEdgeInsets)contentInset {
-    return UIEdgeInsetsMake(0, 0, self.rdv_tabBarController.tabBar.minimumContentHeight, 0);
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -56,7 +52,7 @@
         Post_DetailViewController *detail = [[Post_DetailViewController alloc] initWithViewModel:dviewModel];
         
         [[detail rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
-            [dviewModel.requestRemoteDataCommand execute:item];
+            [dviewModel.sourceCommand execute:item];
             
         }];
         [self.navigationController pushViewController:detail

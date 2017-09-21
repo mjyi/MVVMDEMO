@@ -74,11 +74,6 @@
 
 - (void)bindViewModel {
     [super bindViewModel];
-    @weakify(self)
-    [self.viewModel.requestRemoteDataCommand.errors subscribeNext:^(NSError *xx) {
-        @strongify(self)
-        [self showErrorHUD:xx.domain];
-    }];
 }
 
 

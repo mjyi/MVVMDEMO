@@ -11,5 +11,5 @@
 @protocol JDRequestProtocol <NSObject>
 
 - (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page;
-
+-(id)analysisOfResponse:(id)response;
 @end

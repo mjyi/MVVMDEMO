@@ -21,10 +21,6 @@
 
 @synthesize viewModel;
 
-- (UIEdgeInsets)contentInset {
-    return UIEdgeInsetsMake(0, 0, self.rdv_tabBarController.tabBar.minimumContentHeight, 0);
-}
-
 -(void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
 }

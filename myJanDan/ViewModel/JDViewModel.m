@@ -24,10 +24,21 @@
 
 - (void)initialize{}
 
+- (RACSubject *)errors {
+    if (!_errors) {
+        _errors = [RACSubject subject];
+    }
+    return _errors;
+}
+
 #pragma mark - JDRequestProtocol
 
 - (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page {
     return [RACSignal empty];
+}
+
+-(id)analysisOfResponse:(id)response {
+    return nil;
 }
 
 @end

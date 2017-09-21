@@ -74,9 +74,7 @@
      placeholder:nil
      options:YYWebImageOptionProgressiveBlur | YYWebImageOptionSetImageWithFadeAnimation
      progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-
-         DebugLog(@" %@\n  %ld / %ld", meta.url, receivedSize, expectedSize);
-         
+//         DebugLog(@" %@\n  %ld / %ld", meta.url, receivedSize, expectedSize);
          [self.animatedImageView showPropress:(receivedSize/(float)expectedSize)];
      }
      transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {

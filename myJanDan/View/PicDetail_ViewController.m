@@ -29,14 +29,21 @@
 - (void)bindViewModel {
     [super bindViewModel];
     @weakify(self)
-    [[self.viewModel.requestRemoteDataCommand.executionSignals switchToLatest] subscribeNext:^(PicDetailModel *x) {
+    [[self.viewModel.sourceCommand.executionSignals switchToLatest] subscribeNext:^(PicDetailModel *x) {
         @strongify(self)
-        
         NSDictionary *post = @{@"content": x.pic.comment_content};
         NSError *err;
         NSString *rendering = [GRMustacheTemplate renderObject:post fromResource:@"/www/article" bundle:nil error:&err];
-        
         [self.webView loadHTMLString:rendering baseURL:nil];
+    }];
+    
+    [self.viewModel.sourceCommand.errors subscribeNext:^(NSError *x) {
+        @strongify(self)
+        NSDictionary *post = @{@"content": self.viewModel.picDetail.pic.comment_content};
+        NSError *err;
+        NSString *rendering = [GRMustacheTemplate renderObject:post fromResource:@"/www/article" bundle:nil error:&err];
+        [self.webView loadHTMLString:rendering baseURL:nil];
+        [self showErrorHUD:x.domain];
     }];
 }
 

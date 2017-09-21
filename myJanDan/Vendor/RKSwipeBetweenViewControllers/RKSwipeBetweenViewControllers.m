@@ -145,6 +145,12 @@ CGFloat X_OFFSET = 8.0; //%%% for some reason there's a little bit of a glitchy 
         pageController.delegate = self;
         pageController.dataSource = self;
         [pageController setViewControllers:@[[viewControllerArray objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        RAC(self.topViewController,
+            title) = [[RACObserve(self, curViewController)
+                       distinctUntilChanged]
+                      map:^id(UIViewController *curVC) {
+                          return curVC.title;
+                      }];
         [self syncScrollView];
     }
 }
@@ -215,6 +221,7 @@ CGFloat X_OFFSET = 8.0; //%%% for some reason there's a little bit of a glitchy 
 
 - (void)setCurrentPageIndex:(NSInteger)currentPageIndex{
     _currentPageIndex = currentPageIndex;
+    self.topViewController.title = self.buttonText[self.currentPageIndex];
     [self.viewControllerArray enumerateObjectsUsingBlock:^(UIViewController *obj, NSUInteger idx, BOOL *stop) {
         for (UIView *aView in [obj.view subviews]) {
             if ([aView isKindOfClass:[UIScrollView class]]) {

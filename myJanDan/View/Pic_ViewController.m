@@ -22,10 +22,6 @@
 
 @synthesize viewModel;
 
-- (UIEdgeInsets)contentInset {
-    return UIEdgeInsetsMake(0, 0, self.rdv_tabBarController.tabBar.minimumContentHeight, 0);
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"Pic_Cell" bundle:nil] forCellReuseIdentifier:[Pic_Cell className]];
@@ -41,7 +37,7 @@
     [super bindViewModel];
     
     [[self.viewModel.didSelected.executionSignals switchToLatest] subscribeNext:^(PicModel *item) {
-        DebugLog(@"didSelected: %@",item);
+//        DebugLog(@"didSelected: %@",item);
         PicDetailViewModel *pViewModel = [[PicDetailViewModel alloc] init];
         PicDetailModel *dtt = [PicDetailModel new];
         dtt.pic = item;
@@ -49,7 +45,7 @@
         PicDetail_ViewController *dctrl = [[PicDetail_ViewController alloc] initWithViewModel:pViewModel];
         
         [[dctrl rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
-            [pViewModel.requestRemoteDataCommand execute:item];
+            [pViewModel.sourceCommand execute:item];
             
         }];
         [self.navigationController pushViewController:dctrl
@@ -79,7 +75,7 @@
     for (UIView *subView in cell.contentView.subviews) {
         if ([subView isKindOfClass:[YYAnimatedImageView class]]) {
             YYAnimatedImageView *aV = (YYAnimatedImageView *)subView;
-            DebugLog(@"size:{%f, %f}", aV.image.size.width, aV.image.size.height);
+//            DebugLog(@"size:{%f, %f}", aV.image.size.width, aV.image.size.height);
         }
     }
 }

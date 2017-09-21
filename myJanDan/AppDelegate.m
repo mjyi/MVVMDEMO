@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "JDRootTabViewController.h"
 #import "SettingsHelper.h"
+#import "ImageHTTPProtocol.h"
+#import "NSURLProtocol+WebKitSupport.h"
 
 #ifdef DEBUG
 #import <FLEX/FLEX.h>
@@ -31,15 +33,16 @@
 #ifdef DEBUG
     [[FLEXManager sharedManager] showExplorer];
 #endif
-    
+    [NSURLProtocol registerClass:[ImageHTTPProtocol class]];
+    [NSURLProtocol wk_registerScheme:@"http"];
+    [NSURLProtocol wk_registerScheme:@"https"];
     return YES;
     
 }
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    
 }
 
 
@@ -66,7 +69,6 @@
 #pragma mark - Custom Method
 - (void)setRootTabController {
     JDRootTabViewController *root = [[JDRootTabViewController alloc] init];
-    root.tabBar.translucent = YES;
     self.window.rootViewController = root;
     
 }

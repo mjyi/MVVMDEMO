@@ -1,12 +1,12 @@
 //
-//  RequestRemoteSize.m
+//  RequestRemoteSizeHost.m
 //  myJanDan
 //
 //  Created by mervin on 2017/8/28.
 //  Copyright © 2017年 浅浅浅. All rights reserved.
 //
 
-#import "RequestRemoteSize.h"
+#import "RequestRemoteSizeHost.h"
 
 // 低位在前，高位在后
 static inline uint16_t swap_data_uint16(uint16_t value) {
@@ -23,7 +23,7 @@ static inline uint32_t swap_data_uint32(uint32_t value) {
     (uint32_t)((value & 0xFF000000U) >> 24) ;
 }
 
-@implementation RequestRemoteSize
+@implementation RequestRemoteSizeHost
 
 - (RACSignal *)requsetRemoteSize:(NSString *)imgURL {
     NSAssert(imgURL, @"image URL Not nil");
@@ -60,7 +60,7 @@ static inline uint32_t swap_data_uint32(uint32_t value) {
                 CGSize size = [self decoderSizeWithData:data];
                 [subscriber sendNext:[NSValue valueWithCGSize:size]];
                 [subscriber sendCompleted];
-                NSLog(@"allHeaders :%@", completedRequest.response.allHeaderFields);
+//                NSLog(@"allHeaders :%@", completedRequest.response.allHeaderFields);
             }
         }];
         [self startRequest:request];

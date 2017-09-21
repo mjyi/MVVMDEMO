@@ -8,11 +8,11 @@
 
 #import "Pic_ViewModel.h"
 #import "PicModel.h"
-#import "RequestRemoteSize.h"
+#import "RequestRemoteSizeHost.h"
 
 @interface Pic_ViewModel ()
 
-@property(nonatomic, strong) RequestRemoteSize *sizeHost;
+@property(nonatomic, strong) RequestRemoteSizeHost *sizeHost;
 
 @end
 
@@ -42,8 +42,14 @@
             }
         }
     }];
-    self.sizeHost = [[RequestRemoteSize alloc] init];
-    
+}
+
+- (RequestRemoteSizeHost *)sizeHost {
+    if (!_sizeHost) {
+        _sizeHost = [[RequestRemoteSizeHost alloc] init];
+        [_sizeHost enableCache];
+    }
+    return _sizeHost;
 }
 
 - (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page {
@@ -65,21 +71,21 @@
     
     return [signal flattenMap:^RACStream *(NSDictionary *value) {
         @strongify(self)
-        int count = [[value valueForKey:@"count"] intValue];
-        if (self.perPage < 0) self.perPage = count;
-        NSMutableArray *signals = [NSMutableArray array];
-        for (NSDictionary *dic in value[@"comments"]) {
-            PicModel *model = [PicModel modelWithDictionary:dic];
-            model.type = self.type;
-            
-            RACSignal *p_S = [self picSizeFromRemoteURL:model];
-            
-            [signals addObject:p_S];
-        }
-        return [[RACSignal combineLatest:signals] map:^id(id value) {
-//            DebugLog(@"%@", value);
-            return value;
-        }];
+//        int count = [[value valueForKey:@"count"] intValue];
+//        if (self.perPage < 0) self.perPage = count;
+//        NSMutableArray *signals = [NSMutableArray array];
+//        for (NSDictionary *dic in value[@"comments"]) {
+//            PicModel *model = [PicModel modelWithDictionary:dic];
+//            model.type = self.type;
+//
+//            RACSignal *p_S = [self picSizeFromRemoteURL:model];
+//
+//            [signals addObject:p_S];
+//        }
+//        return [[RACSignal combineLatest:signals] map:^id(id value) {
+//            return value;
+//        }];
+        return [self analysisOfResponse:value];
     }];
 }
 
@@ -95,6 +101,28 @@
         }];
     }
     return signal;
+}
+
+- (id)analysisOfResponse:(NSDictionary *)response {
+
+    if ([response[@"status"] isEqualToString:@"ok"]) {
+        int count = [[response valueForKey:@"count"] intValue];
+        if (self.perPage < 0) self.perPage = count;
+        NSMutableArray *signals = [NSMutableArray array];
+        for (NSDictionary *dic in response[@"comments"]) {
+            PicModel *model = [PicModel modelWithDictionary:dic];
+            model.type = self.type;
+            
+            RACSignal *p_S = [self picSizeFromRemoteURL:model];
+            
+            [signals addObject:p_S];
+        }
+        return [[RACSignal combineLatest:signals] map:^id(id value) {
+            return value;
+        }];
+    }
+    [self.errors sendNext:[NSError errorWithDomain:@"服务器返回异常" code:0 userInfo:nil]];
+    return [RACSignal empty];
 }
 
 @end

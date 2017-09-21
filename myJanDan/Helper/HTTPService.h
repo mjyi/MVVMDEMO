@@ -59,29 +59,15 @@ static NSString * const kTucaoURL = @"http://i.jandan.net/tucao/";
 - (RACSignal *)duan_SignalWithPage:(NSInteger)page;
 
 
+/**
+  图片，段子 tucao
+ */
 - (RACSignal *)tucao_SignalWithCommentID:(NSString *)commentID;
 
 @end
 
-static NSString* const BoredPicturesUrl = @"http://i.jandan.net/?oxwlxojflwblxbsapi=jandan.get_pic_comments&page=";
-
-//妹子图
-static NSString* const SisterPicturesUrl = @"http://i.jandan.net/?oxwlxojflwblxbsapi=jandan.get_ooxx_comments&page=";
-
-//段子
-static NSString* const JokeUrl = @"http://i.jandan.net/?oxwlxojflwblxbsapi=jandan.get_duan_comments&page=";
-
 //小视频
 static NSString* const littleMovieUrl = @"http://i.jandan.net/?oxwlxojflwblxbsapi=jandan.get_video_comments&page=";
-
-//评论数量
-static NSString* const commentCountUrl = @"http://jandan.duoshuo.com/api/threads/counts.json?threads=";
-
-//新鲜事详情
-static NSString* const freshNewDetailUrl = @"http://i.jandan.net/?oxwlxojflwblxbsapi=get_post&include=content&id=";
-
-//新鲜事评论
-static NSString* const freshNewCommentlUrl = @"http://jandan.net/?oxwlxojflwblxbsapi=get_post&include=comments&id=";
 
 //发表评论接口
 static NSString* const pushCommentlUrl = @"http://jandan.net/?oxwlxojflwblxbsapi=respond.submit_comment";

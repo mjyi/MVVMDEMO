@@ -21,8 +21,4 @@
 
 @property (nonatomic, strong) RACCommand *didSelected;
 
-//- (id)fetchLocalData;
-
-//- (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page;
-
 @end

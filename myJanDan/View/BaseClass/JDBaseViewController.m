@@ -16,23 +16,32 @@
 
 @implementation JDBaseViewController
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
+
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (self.rdv_tabBarController.tabBar.hidden) {
-        [self.rdv_tabBarController setTabBarHidden:(self.navigationController.viewControllers.count>1) animated:YES];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (!self.rdv_tabBarController.tabBar.hidden) {
-        [self.rdv_tabBarController setTabBarHidden:(self.navigationController.viewControllers.count>1) animated:YES];
-    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor whiteColor];
     [self bindViewModel];
 }
@@ -43,15 +52,7 @@
 }
 
 - (void)bindViewModel {
-    @weakify(self)
-    [RACObserve(self.viewModel, title) subscribeNext:^(NSString *title) {
-        @strongify(self)
-        self.title = title;
-    }];
-    [self.viewModel.requestRemoteDataCommand.errors subscribeNext:^(NSError *x) {
-        @strongify(self)
-        [self showErrorHUD:x.domain];
-    }];
+    RAC(self, title) = RACObserve(self.viewModel, title);
 }
 
 - (instancetype)initWithViewModel:(JDViewModel *)viewModel {

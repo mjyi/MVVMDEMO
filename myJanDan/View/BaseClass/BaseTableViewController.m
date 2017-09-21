@@ -8,9 +8,8 @@
 
 #import "BaseTableViewController.h"
 #import "TableViewModel.h"
-#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
-@interface BaseTableViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface BaseTableViewController ()
 
 @property (nonatomic, strong, readonly)TableViewModel *viewModel;
 
@@ -34,16 +33,13 @@
         tableView.dataSource = self;
         tableView.contentInset = self.contentInset;
         tableView.tableFooterView = [UIView new];
-        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
         [self.view addSubview:tableView];
         [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
         }];
         tableView.separatorInset = UIEdgeInsetsZero;
         tableView.layoutMargins = UIEdgeInsetsZero;
-        tableView.separatorColor = [UIColor redColor];
-        tableView.emptyDataSetSource = self;
-        tableView.emptyDataSetDelegate = self;
+        tableView.separatorColor = kColorCellLine;
         tableView;
     });
     
@@ -57,9 +53,6 @@
              subscribeNext:^(NSArray *results) {
                  @strongify(self)
                  self.viewModel.page = 1;
-             } error:^(NSError *error) {
-                 @strongify(self)
-                 [self.tableView.pullToRefreshView stopAnimating];
              } completed:^{
                  @strongify(self)
                  [self.tableView.pullToRefreshView stopAnimating];
@@ -76,10 +69,6 @@
              subscribeNext:^(NSArray *results) {
                  @strongify(self)
                  self.viewModel.page += 1;
-             } error:^(NSError *error) {
-                 @strongify(self)
-                 [self.tableView.infiniteScrollingView stopAnimating];
-                 [self showErrorHUD:error.domain];
              } completed:^{
                  @strongify(self)
                  [self.tableView.infiniteScrollingView stopAnimating];
@@ -87,22 +76,18 @@
             
         }];
     }
-    RAC(self.tableView, showsInfiniteScrolling) = [[[RACObserve(self.viewModel, dataSource)
-                                                     distinctUntilChanged]
-                                                    deliverOnMainThread]
-                                                   map:^id(NSArray *dataSource) {
-                                                       @strongify(self)
-                                                       NSInteger count = 0;
-                                                       NSArray *arr = dataSource[0];
-                                                       
-                                                       count += arr.count;
-                                                       return @(count >= self.viewModel.perPage);
-                                                   }];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    RAC(self.tableView,
+        showsInfiniteScrolling) = [[[RACObserve(self.viewModel, dataSource)
+                                     distinctUntilChanged]
+                                    deliverOnMainThread]
+                                   map:^id(NSArray *dataSource) {
+                                       @strongify(self)
+                                       NSInteger count = 0;
+                                       NSArray *arr = dataSource[0];
+                                       
+                                       count += arr.count;
+                                       return @(count >= self.viewModel.perPage);
+                                   }];
 }
 
 - (void)bindViewModel {
@@ -115,13 +100,19 @@
          @strongify(self)
          [self.tableView reloadData];
      }];
+    [self.viewModel.errors subscribeNext:^(NSError *x) {
+        @strongify(self)
+        [self showErrorHUD:x.domain];
+        [self.tableView.infiniteScrollingView stopAnimating];
+        [self.tableView.pullToRefreshView stopAnimating];
+    }];
 }
 
 
 #pragma mark - UITableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     return nil;
 }
 
@@ -132,90 +123,5 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.viewModel.dataSource.count;
 }
-
-
-#pragma mark - DZNEmptyDataSetSource Methods
-
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
-    NSString *text = @"No Data loaded";
-    
-    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0],
-                                 NSForegroundColorAttributeName: [UIColor colorWithRed:170/255.0 green:171/255.0 blue:179/255.0 alpha:1.0],
-                                 NSParagraphStyleAttributeName: paragraphStyle};
-    
-    return [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
-}
-
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return nil;
-}
-
-- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView
-{
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    animation.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI_2, 0.0, 0.0, 1.0) ];
-    animation.duration = 0.25;
-    animation.cumulative = YES;
-    animation.repeatCount = MAXFLOAT;
-    
-    return animation;
-}
-
-- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-{
-    return nil;
-}
-
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIImage imageNamed:@"empty_placeholder"];
-}
-
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIColor whiteColor];
-}
-
-- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return 0;
-}
-
-
-#pragma mark - DZNEmptyDataSetSource Methods
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView {
-    return NO;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    NSLog(@"%s",__FUNCTION__);
-    [self.viewModel.requestRemoteDataCommand execute:@1];
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
-{
-    
-    NSLog(@"%s",__FUNCTION__);
-}
-
 
 @end

@@ -26,6 +26,8 @@
         return [[self requestRemoteDataSignalWithPage:page.integerValue] takeUntil:self.rac_willDeallocSignal];
     }];
     
+    [self.requestRemoteDataCommand.errors subscribe:self.errors];
+    
     RACSignal *localDataSignal = [self fetchLocalData];
     RACSignal *netDataSignal = self.requestRemoteDataCommand.executionSignals.switchToLatest;
 
@@ -65,7 +67,7 @@
 
 - (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page {
     self.curPage = page;
-    return nil;
+    return [RACSignal empty];
 }
 
 @end

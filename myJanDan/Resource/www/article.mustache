@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <title>{{title}}</title>
-    <link rel="stylesheet" type="text/css" href="./mobile.css">
     <style type="text/css">
     body,
     html {
@@ -31,29 +30,12 @@
         padding: 0
     }
 
-    textarea {
-        outline-width: 0;
-        border-width: 0;
-        cursor: default
-    }
-
-    textarea:active,
-    textarea:focus {
-        outline-width: 0;
-        border-width: 0
-    }
-
-    a {
-        text-decoration: none;
-        -webkit-tap-highlight-color: transparent
-    }
-
     a img {
         border: 0
     }
 
     .container {
-        padding: 10px 18px 0
+        padding: 0 5px 0
     }
 
     .container a {
@@ -63,14 +45,6 @@
 
     .avatar img {
         border: 1px solid #ddd
-    }
-
-    .top-title {
-        margin: 0 -18px;
-        padding: 10px 18px;
-        font-size: 14px;
-        font-weight: 700;
-        color: #545454
     }
 
     .load-more {
@@ -122,14 +96,16 @@
     }
 
     .note .content img {
-        max-width: 100%
+        width: 100%
     }
     </style>
 </head>
 
 <body>
     <div class="container note">
+        {{#title}}
         <h1 class="title">{{title}}</h1>
+        {{/title}}
         <div class="author"></div>
         <div class="content">
             {{{content}}}

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 typedef NS_ENUM(NSUInteger, EmptySetType) {
     EmptySetTypeDefault = 0,
@@ -20,7 +19,7 @@ typedef NS_ENUM(NSUInteger, EmptySetType) {
 
 
 
-@interface EmptySetManager : NSObject<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface EmptySetManager : NSObject
 
 
 

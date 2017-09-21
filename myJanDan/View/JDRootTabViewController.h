@@ -6,8 +6,8 @@
 //
 //
 
-#import <RDVTabBarController/RDVTabBarController.h>
+#import <UIKit/UIKit.h>
 
-@interface JDRootTabViewController : RDVTabBarController
+@interface JDRootTabViewController : UITabBarController
 
 @end

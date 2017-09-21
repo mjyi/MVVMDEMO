@@ -16,13 +16,9 @@
 - (void)initialize {
     [super initialize];
     @weakify(self)      //TODO : concat local+remote
-    self.requestRemoteDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    self.sourceCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(PostModel *post) {
         @strongify(self)
-        RACSignal *signal = [RACSignal empty];
-        if ([input isKindOfClass:[PostModel class]]) {
-            PostModel *post = (PostModel *)input;
-            signal = [self requestRemoteDataSignalWithParam:@(post.ID)];
-        }
+        RACSignal *signal = [self requestRemoteDataSignalWithParam:@(post.ID)];
         return [[signal map:^id(PostDetailModel *value) {
             self.title = value.post.title;
             self.postDetail = value;
@@ -31,7 +27,6 @@
             return [RACSignal error:error];
         }];
     }];
-    
 }
 
 /**
@@ -40,9 +35,8 @@
  @param param 参数（id/slug)
  @return request Signal
  */
-- (RACSignal *)requestRemoteDataSignalWithParam:(id)param {
+- (RACSignal *)requestRemoteDataSignalWithParam:(NSNumber *)param {
     
-    if ([param isKindOfClass:[NSNumber class]]) {
         return [[[JDHTTPService postDetail_signalWithId:[param integerValue]] map:^id(NSDictionary *value) {
             //        NSDictionary *dict = value[@"post"];
             PostDetailModel *postDetail = [PostDetailModel modelWithJSON:value];
@@ -51,8 +45,6 @@
         }] catch:^RACSignal *(NSError *error) {
             return [RACSignal error:error];
         }];
-    }
-    return [RACSignal empty];
     
 }
 

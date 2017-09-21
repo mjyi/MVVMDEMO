@@ -26,14 +26,14 @@
 #pragma mark- override
 - (void)prepareRequest:(MKNetworkRequest *)networkRequest {
     [super prepareRequest:networkRequest];
+    networkRequest.request.timeoutInterval = 20;
 }
 
 #pragma mark - Public
 
 - (RACSignal *)posts_signalWithPage:(NSInteger)page {
     NSString *url = [NSString stringWithFormat:@"%@%ld",kPostsURL, page];
-    RACSignal *signal = [self rac_signalWithURLString:url];
-    return [self requestStatusSignal:signal];
+    return [self rac_signalWithURLString:url];
 }
 
 - (RACSignal *)postDetail_signalWithId:(NSInteger)ID {
@@ -71,7 +71,7 @@
 }
 
 - (RACSignal *)requestStatusSignal:(RACSignal *)signal {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         RACDisposable *subscriptionDisposable = [signal subscribeNext:^(NSDictionary *dict) {
             if ([dict[@"status"] isEqualToString:@"ok"]) {
                 [subscriber sendNext:dict];
@@ -84,6 +84,8 @@
         return [RACDisposable disposableWithBlock:^{
             [subscriptionDisposable dispose];
         }];
+    }] catch:^RACSignal *(NSError *error) {
+        return [RACSignal error:error];
     }];
 }
 

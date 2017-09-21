@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "NSString+Addition.h"
-#import "RequestRemoteSize.h"
+#import "RequestRemoteSizeHost.h"
 #import <ReactiveCocoa.h>
 // 低位在前，高位在后
 static inline uint16_t swap_data_uint16(uint16_t value) {
@@ -79,7 +79,7 @@ static inline uint32_t swap_data_uint32(uint32_t value) {
 //    UIImage *image = [UIImage imageNamed:@"pngimage.png"];
 //    NSData *data = UIImagePNGRepresentation(image);
 //    
-//    RequestRemoteSize *rrs = [RequestRemoteSize new];
+//    RequestRemoteSizeHost *rrs = [RequestRemoteSizeHost new];
 //    CGSize sz = [rrs decoderSizeWithData:data];
 //    NSLog(@"{ %f, %f }",sz.width, sz.height);
 //    XCTAssert((sz.width == 700) && (sz.height == 233));

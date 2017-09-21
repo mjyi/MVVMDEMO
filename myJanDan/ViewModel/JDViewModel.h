@@ -13,6 +13,7 @@
 @interface JDViewModel : NSObject<JDRequestProtocol>
 
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) RACSubject *errors;
 @property (nonatomic, strong) RACCommand *requestRemoteDataCommand;
 
 - (void)initialize;
