@@ -60,6 +60,7 @@
 		D87E0F421F6EB00D00C06D11 /* www in Resources */ = {isa = PBXBuildFile; fileRef = D87E0F411F6EB00D00C06D11 /* www */; };
 		D88974681F53AF33002DB8A4 /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D88974671F53AF33002DB8A4 /* UIView+Common.m */; };
 		D88974711F541F8A002DB8A4 /* RequestRemoteSizeHost.m in Sources */ = {isa = PBXBuildFile; fileRef = D88974701F541F8A002DB8A4 /* RequestRemoteSizeHost.m */; };
+		D89FEB8D1F7927E400627234 /* TXNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D89FEB8C1F7927E400627234 /* TXNavigationTitleView.m */; };
 		D8C194741F57BA0800546648 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C194721F57BA0800546648 /* SettingCell.m */; };
 		D8C194751F57BA0800546648 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8C194731F57BA0800546648 /* SettingCell.xib */; };
 		D8CAC51C1F73CFD6000F3D20 /* JUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAC51B1F73CFD6000F3D20 /* JUIHelper.m */; };
@@ -210,6 +211,8 @@
 		D88974671F53AF33002DB8A4 /* UIView+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Common.m"; sourceTree = "<group>"; };
 		D889746F1F541F8A002DB8A4 /* RequestRemoteSizeHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestRemoteSizeHost.h; sourceTree = "<group>"; };
 		D88974701F541F8A002DB8A4 /* RequestRemoteSizeHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestRemoteSizeHost.m; sourceTree = "<group>"; };
+		D89FEB8B1F7927E400627234 /* TXNavigationTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXNavigationTitleView.h; sourceTree = "<group>"; };
+		D89FEB8C1F7927E400627234 /* TXNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXNavigationTitleView.m; sourceTree = "<group>"; };
 		D8C194711F57BA0800546648 /* SettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		D8C194721F57BA0800546648 /* SettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		D8C194731F57BA0800546648 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
@@ -514,6 +517,8 @@
 				D83C5AB41F5CFFA60003EFE3 /* EmptySetManager.m */,
 				D8E0DA461F724D6A00E8663C /* ImageHTTPProtocol.h */,
 				D8E0DA471F724D6A00E8663C /* ImageHTTPProtocol.m */,
+				D89FEB8B1F7927E400627234 /* TXNavigationTitleView.h */,
+				D89FEB8C1F7927E400627234 /* TXNavigationTitleView.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -824,6 +829,7 @@
 				D876A05B1F442C3A00F22992 /* PostItemCell.m in Sources */,
 				D8E0DA4B1F72AFF900E8663C /* NSURLProtocol+WebKitSupport.m in Sources */,
 				D801B3C61F51174A0099813D /* EasePageViewController.m in Sources */,
+				D89FEB8D1F7927E400627234 /* TXNavigationTitleView.m in Sources */,
 				D8D8711F1F60ECA400F25005 /* UIViewController+JGProgressHUD.m in Sources */,
 				D865EB5D1F40A4190000F6B8 /* AppDelegate.m in Sources */,
 				D87BFBA91F41A53400A988EA /* NSDate+RFC1123.m in Sources */,
