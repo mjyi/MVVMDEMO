@@ -65,33 +65,4 @@ static inline uint32_t swap_data_uint32(uint32_t value) {
     NSLog(@"%u, %u",b2,z2);
 }
 
-- (void)testSizeDecoder {
-    
-    NSString *testURL = @"http://wx3.sinaimg.cn/mw690/6287f3a7gy1fiw7soenayg207p0497wi.gif";
-    
-    // Size 277 × 153
-    
-    
-    
-    
-    
-//    // size: 700  233
-//    UIImage *image = [UIImage imageNamed:@"pngimage.png"];
-//    NSData *data = UIImagePNGRepresentation(image);
-//    
-//    RequestRemoteSizeHost *rrs = [RequestRemoteSizeHost new];
-//    CGSize sz = [rrs decoderSizeWithData:data];
-//    NSLog(@"{ %f, %f }",sz.width, sz.height);
-//    XCTAssert((sz.width == 700) && (sz.height == 233));
-//    
-//    // size 640 x 480
-//    UIImage *gif = [UIImage imageNamed:@"test.gif"];
-//    NSData *g_d = UIImagePNGRepresentation(gif);
-//    NSData *gif_data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"gif"]];;
-//    CGSize gif_s = [rrs  decoderSizeWithData:gif_data];
-//    XCTAssert((gif_s.width == 200) && (gif_s.height == 150));
-}
-
-
-
 @end
