@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "JDViewModel.h"
+#import "TitleLoadingView.h"
 
 @interface JDBaseViewController : UIViewController
 
 @property (nonatomic, strong, readonly)JDViewModel *viewModel;
 
-- (void)bindViewModel;
+@property(nonatomic, strong) TitleLoadingView *loadingView;
 
+- (void)bindViewModel;
 //
 - (instancetype)initWithViewModel:(JDViewModel *)viewModel;
 

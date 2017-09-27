@@ -23,25 +23,17 @@
     self.page = 1;
     self.shouldPullToRefresh = YES;
     self.shouldInfiniteScrolling = YES;
-    @weakify(self)
-    [self.requestRemoteDataCommand.executing subscribeNext:^(NSNumber *execting) {
-        @strongify(self)
-        if (execting.boolValue) {
-            self.title = loading_Title;
-        } else {
-            switch (self.type) {
-                case PicTypePIC:
-                    self.title = pic_Title;
-                    break;
-                case PicTypeXXOO:
-                    self.title = xxoo_Title;
-                    break;
-                case PicTypeJoke:
-                    self.title = duan_Title;
-                    break;
-            }
-        }
-    }];
+    switch (self.type) {
+        case PicTypePIC:
+            self.title = pic_Title;
+            break;
+        case PicTypeXXOO:
+            self.title = xxoo_Title;
+            break;
+        case PicTypeJoke:
+            self.title = duan_Title;
+            break;
+    }
 }
 
 - (RequestRemoteSizeHost *)sizeHost {

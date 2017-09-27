@@ -37,11 +37,12 @@ static char imageProtocolRequestKey;
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
 
     NSString *urlString = request.URL.absoluteString;
-    BOOL isImage = [@[@"jpg", @"png", @"jpeg", @"gif"] indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-         return [urlString compare:obj options:NSCaseInsensitiveSearch] == NSOrderedSame;
-    }] != NSNotFound;
+    NSArray *imgURLs = @[@"jpg", @"png", @"jpeg", @"gif"];
+    BOOL isImage = [imgURLs.rac_sequence any:^BOOL(NSString *string) {
+        return [urlString rangeOfString:string options:NSCaseInsensitiveSearch].location != NSNotFound;
+    }];
     
-    return [NSURLProtocol propertyForKey:FilteredKey inRequest:request] == nil && isImage;;
+    return [NSURLProtocol propertyForKey:FilteredKey inRequest:request] == nil && isImage;
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {

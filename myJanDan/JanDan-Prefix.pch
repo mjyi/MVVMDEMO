@@ -19,6 +19,7 @@
 #import "UIColor+expanded.h"
 #import "UIImage+Common.h"
 #import "JDRequestProtocol.h"
+#import "TXUtilities.h"
 
 #endif
 

@@ -80,6 +80,8 @@
 		D8E4C8321F65408600A4FF63 /* PostCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E4C8301F65408600A4FF63 /* PostCommentCell.xib */; };
 		D8EB1E441F57E04200861046 /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EB1E431F57E04200861046 /* SettingsHelper.m */; };
 		D8EB1E471F580AAC00861046 /* SettingCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EB1E461F580AAC00861046 /* SettingCellViewModel.m */; };
+		D8F2EB651F7B3F3900F9DFC8 /* TitleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F2EB641F7B3F3900F9DFC8 /* TitleLoadingView.m */; };
+		D8F2EB681F7B4C3700F9DFC8 /* TXUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F2EB671F7B4C3700F9DFC8 /* TXUtilities.m */; };
 		E7237E38310F27D11D3DFD67 /* libPods-myJanDan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D20DA59970E2F7DEB149E9 /* libPods-myJanDan.a */; };
 /* End PBXBuildFile section */
 
@@ -238,6 +240,10 @@
 		D8EB1E431F57E04200861046 /* SettingsHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
 		D8EB1E451F580AAC00861046 /* SettingCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCellViewModel.h; sourceTree = "<group>"; };
 		D8EB1E461F580AAC00861046 /* SettingCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCellViewModel.m; sourceTree = "<group>"; };
+		D8F2EB631F7B3F3900F9DFC8 /* TitleLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleLoadingView.h; sourceTree = "<group>"; };
+		D8F2EB641F7B3F3900F9DFC8 /* TitleLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleLoadingView.m; sourceTree = "<group>"; };
+		D8F2EB661F7B4C3700F9DFC8 /* TXUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXUtilities.h; sourceTree = "<group>"; };
+		D8F2EB671F7B4C3700F9DFC8 /* TXUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TXUtilities.m; sourceTree = "<group>"; };
 		E7DB331AAA5742D2D0D39DED /* Pods-myJanDanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myJanDanTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-myJanDanTests/Pods-myJanDanTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -509,11 +515,14 @@
 		D87BFB661F41564800A988EA /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				D8F2EB621F7B3F1700F9DFC8 /* UI */,
 				D87BFB7C1F419F8100A988EA /* OC_Category */,
 				D83C5AB31F5CFFA60003EFE3 /* EmptySetManager.h */,
 				D83C5AB41F5CFFA60003EFE3 /* EmptySetManager.m */,
 				D8E0DA461F724D6A00E8663C /* ImageHTTPProtocol.h */,
 				D8E0DA471F724D6A00E8663C /* ImageHTTPProtocol.m */,
+				D8F2EB661F7B4C3700F9DFC8 /* TXUtilities.h */,
+				D8F2EB671F7B4C3700F9DFC8 /* TXUtilities.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -586,6 +595,15 @@
 				D87BFB9E1F41A53400A988EA /* UIImageView+MKNKAdditions.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D8F2EB621F7B3F1700F9DFC8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D8F2EB631F7B3F3900F9DFC8 /* TitleLoadingView.h */,
+				D8F2EB641F7B3F3900F9DFC8 /* TitleLoadingView.m */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -813,6 +831,7 @@
 				D87BFB8C1F41A42300A988EA /* Posts_RootViewController.m in Sources */,
 				D87BFB731F41854200A988EA /* JDRootTabViewController.m in Sources */,
 				D8C194741F57BA0800546648 /* SettingCell.m in Sources */,
+				D8F2EB651F7B3F3900F9DFC8 /* TitleLoadingView.m in Sources */,
 				D8D5E30B1F6149DA007505A7 /* PicDetailViewModel.m in Sources */,
 				D8D871221F61383900F25005 /* TucaoModel.m in Sources */,
 				D8CAC51C1F73CFD6000F3D20 /* JUIHelper.m in Sources */,
@@ -861,6 +880,7 @@
 				D87BFBB31F41A53400A988EA /* MKObject.m in Sources */,
 				D83E59FA1F4AC6AF0011B0AA /* BaseModel.m in Sources */,
 				D8762BAB1F45B4CB0055EB7A /* PostDetailViewModel.m in Sources */,
+				D8F2EB681F7B4C3700F9DFC8 /* TXUtilities.m in Sources */,
 				D8EB1E441F57E04200861046 /* SettingsHelper.m in Sources */,
 				D876A0491F441DCC00F22992 /* PostModel.m in Sources */,
 				D83C5AB51F5CFFA60003EFE3 /* EmptySetManager.m in Sources */,

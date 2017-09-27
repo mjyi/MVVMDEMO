@@ -7,6 +7,7 @@
 //
 
 #import "JDBaseViewController.h"
+#import "TitleLoadingView.h"
 
 @interface JDBaseViewController ()
 
@@ -32,18 +33,19 @@
 }
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self bindViewModel];
+    
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self bindViewModel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,6 +62,14 @@
         self.viewModel = viewModel;
     }
     return self;
+}
+
+- (TitleLoadingView *)loadingView {
+    if (!_loadingView) {
+        _loadingView = [[TitleLoadingView alloc] init];
+        _loadingView.tintColor = kColorNavTitle;
+    }
+    return _loadingView;
 }
 
 - (void)dealloc {

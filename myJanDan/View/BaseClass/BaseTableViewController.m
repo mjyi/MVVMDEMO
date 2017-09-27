@@ -106,6 +106,15 @@
         [self.tableView.infiniteScrollingView stopAnimating];
         [self.tableView.pullToRefreshView stopAnimating];
     }];
+    
+    [self.viewModel.requestRemoteDataCommand.executing subscribeNext:^(NSNumber *x) {
+        @strongify(self)
+        if (x.boolValue) {
+            self.navigationItem.titleView = self.loadingView;
+        } else {
+            self.navigationItem.titleView = nil;
+        }
+    }];
 }
 
 

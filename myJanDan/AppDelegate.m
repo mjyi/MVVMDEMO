@@ -30,9 +30,9 @@
     [self setRootTabController];
     [self customizeInterface];
     
-#ifdef DEBUG
-    [[FLEXManager sharedManager] showExplorer];
-#endif
+//#ifdef DEBUG
+//    [[FLEXManager sharedManager] showExplorer];
+//#endif
     [NSURLProtocol registerClass:[ImageHTTPProtocol class]];
     [NSURLProtocol wk_registerScheme:@"http"];
     [NSURLProtocol wk_registerScheme:@"https"];
