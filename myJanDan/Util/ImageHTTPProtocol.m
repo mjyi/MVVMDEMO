@@ -10,12 +10,14 @@
 #import "MKNetworkKit.h"
 
 #define imageCache      [YYWebImageManager sharedManager].cache
-#define protocolHost    [ImageHTTPProtocol netHost]
+#define ProtocolHost    [ImageHTTPProtocol netHost]
 
 static NSString* const FilteredKey = @"FilteredKey";
 static char imageProtocolRequestKey;
 
 @interface ImageHTTPProtocol ()
+
+@property(nonatomic, strong) MKNetworkRequest *imageRequest;
 
 @end
 
@@ -63,9 +65,10 @@ static char imageProtocolRequestKey;
         [self.client URLProtocol:self didReceiveResponse:rsp cacheStoragePolicy:NSURLCacheStorageAllowed];
         [self.client URLProtocol:self didLoadData:imageData];
         [self.client URLProtocolDidFinishLoading:self];
+        return;
     }
     
-    self.imageRequest = [protocolHost requestWithURLString:request.URL.absoluteString];
+    self.imageRequest = [ProtocolHost requestWithURLString:request.URL.absoluteString];
     self.imageRequest.request.timeoutInterval = 15;
     @weakify(self)
     [self.imageRequest addCompletionHandler:^(MKNetworkRequest *completedRequest) {

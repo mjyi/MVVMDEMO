@@ -9,8 +9,7 @@
 #import "AppDelegate.h"
 #import "JDRootTabViewController.h"
 #import "SettingsHelper.h"
-#import "ImageHTTPProtocol.h"
-#import "NSURLProtocol+WebKitSupport.h"
+
 
 #ifdef DEBUG
 #import <FLEX/FLEX.h>
@@ -33,9 +32,7 @@
 //#ifdef DEBUG
 //    [[FLEXManager sharedManager] showExplorer];
 //#endif
-    [NSURLProtocol registerClass:[ImageHTTPProtocol class]];
-    [NSURLProtocol wk_registerScheme:@"http"];
-    [NSURLProtocol wk_registerScheme:@"https"];
+    
     return YES;
     
 }

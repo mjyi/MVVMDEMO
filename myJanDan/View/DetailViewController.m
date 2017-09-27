@@ -7,6 +7,8 @@
 //
 
 #import "DetailViewController.h"
+#import "ImageHTTPProtocol.h"
+#import "NSURLProtocol+WebKitSupport.h"
 
 @interface DetailViewController ()<WKNavigationDelegate,WKUIDelegate>
 
@@ -18,8 +20,18 @@
 
 @synthesize viewModel;
 
+
+- (void)dealloc {
+    [NSURLProtocol unregisterClass:[ImageHTTPProtocol class]];
+    [NSURLProtocol wk_unregisterScheme:@"http"];
+    [NSURLProtocol wk_unregisterScheme:@"https"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [NSURLProtocol registerClass:[ImageHTTPProtocol class]];
+    [NSURLProtocol wk_registerScheme:@"http"];
+    [NSURLProtocol wk_registerScheme:@"https"];
     
 }
 
@@ -75,7 +87,5 @@
 - (void)bindViewModel {
     [super bindViewModel];
 }
-
-
 
 @end
