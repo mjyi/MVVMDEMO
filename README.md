@@ -15,8 +15,6 @@
 - [ ] 渲染评论htmlString
 - [ ] 本地缓存
 - [ ] 将WKWebView加载图片缓存
-- [ ] titleView 作加载提示
+- [x] titleView 作加载提示
 - [ ] EmptyView
 - [ ] 封装常用控件
-
-![](screenshot.png)

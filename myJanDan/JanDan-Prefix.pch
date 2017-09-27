@@ -59,7 +59,7 @@
 #define kColorOO        [UIColor colorWithHexString:@"0xF00000"]
 #define kColorXX        [UIColor colorWithHexString:@"0x00F000"]
 #define kColorSub       [UIColor colorWithHexString:@"0x9A9B94"]
-#define kColorCellLine  [UIColor colorWithHexString:@"0x8e8e8e"]
+#define kColorCellLine  [UIColor colorWithHexString:@"0xFDF5E6"]
 
 // Font
 #define FontOfSize(size)        [UIFont systemFontOfSize:size]
