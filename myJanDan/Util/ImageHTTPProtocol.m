@@ -77,13 +77,16 @@ static char imageProtocolRequestKey;
             [self.client URLProtocol:self didFailWithError:completedRequest.error];
         } else {
             NSData *data = completedRequest.responseData;
-            YYImage *image = [YYImage imageWithData:data];
-            [imageCache setValue:image forKey:completedRequest.request.URL.absoluteString];
+            [imageCache setImage:nil
+                       imageData:data
+                          forKey:completedRequest.request.URL.absoluteString
+                        withType:YYImageCacheTypeAll];
             [self.client URLProtocol:self didReceiveResponse:completedRequest.response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
             [self.client URLProtocol:self didLoadData:data];
             [self.client URLProtocolDidFinishLoading:self];
         }
     }];
+    [ProtocolHost startRequest:self.imageRequest];
 }
 
 - (void)stopLoading {
