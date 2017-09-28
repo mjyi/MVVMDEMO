@@ -9,11 +9,6 @@
 #import "AppDelegate.h"
 #import "JDRootTabViewController.h"
 #import "SettingsHelper.h"
-#import "TURLSessionProtocol.h"
-
-#ifdef DEBUG
-#import <FLEX/FLEX.h>
-#endif
 
 @interface AppDelegate ()
 
@@ -28,11 +23,8 @@
     [self.window makeKeyAndVisible];
     [self setRootTabController];
     [self customizeInterface];
-    [NSURLProtocol registerClass:[TURLSessionProtocol class]];
-    
     
     return YES;
-    
 }
 
 
