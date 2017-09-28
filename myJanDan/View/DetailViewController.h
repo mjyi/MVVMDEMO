@@ -7,10 +7,9 @@
 //
 
 #import "JDBaseViewController.h"
-#import <WebKit/WebKit.h>
 
 @interface DetailViewController : JDBaseViewController
 
-@property (nonatomic, strong) WKWebView *webView;
+@property (nonatomic, strong) UIWebView *webView;
 
 @end

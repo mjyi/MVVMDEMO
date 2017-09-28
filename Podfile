@@ -7,7 +7,6 @@ target 'myJanDan' do
   pod 'Masonry'
   pod 'JGProgressHUD'
   pod 'YYKit'
-  pod 'FLEX', '~> 2.4.0'
   pod 'GRMustache', '~> 7.3.2'
   
   target 'myJanDanTests' do

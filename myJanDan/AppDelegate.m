@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "JDRootTabViewController.h"
 #import "SettingsHelper.h"
-
+#import "TURLSessionProtocol.h"
 
 #ifdef DEBUG
 #import <FLEX/FLEX.h>
@@ -28,10 +28,8 @@
     [self.window makeKeyAndVisible];
     [self setRootTabController];
     [self customizeInterface];
+    [NSURLProtocol registerClass:[TURLSessionProtocol class]];
     
-//#ifdef DEBUG
-//    [[FLEXManager sharedManager] showExplorer];
-//#endif
     
     return YES;
     

@@ -7,12 +7,8 @@
 //
 
 #import "DetailViewController.h"
-#import "ImageHTTPProtocol.h"
-#import "NSURLProtocol+WebKitSupport.h"
 
-@interface DetailViewController ()<WKNavigationDelegate,WKUIDelegate>
-
-@property (nonatomic, strong) CALayer *progressLayer;
+@interface DetailViewController ()<UIWebViewDelegate>
 
 @end
 
@@ -20,72 +16,36 @@
 
 @synthesize viewModel;
 
-
-- (void)dealloc {
-    [NSURLProtocol unregisterClass:[ImageHTTPProtocol class]];
-    [NSURLProtocol wk_unregisterScheme:@"http"];
-    [NSURLProtocol wk_unregisterScheme:@"https"];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [NSURLProtocol registerClass:[ImageHTTPProtocol class]];
-    [NSURLProtocol wk_registerScheme:@"http"];
-    [NSURLProtocol wk_registerScheme:@"https"];
-    
 }
 
-- (WKWebView *)webView {
+
+- (UIWebView *)webView {
     if (!_webView) {
-        
-        WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-        configuration.userContentController = [WKUserContentController new];
-        
-        WKPreferences *preferences = [WKPreferences new];
-        preferences.javaScriptCanOpenWindowsAutomatically = YES;
-        configuration.preferences = preferences;
-        configuration.processPool = [[WKProcessPool alloc] init];
-        _webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:configuration];
+        _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        _webView.delegate = self;
         [self.view addSubview:_webView];
-        @weakify(self)
-        [[[RACObserve(self.webView, estimatedProgress)
-           distinctUntilChanged]
-          deliverOnMainThread] subscribeNext:^(NSNumber *progress) {
-            @strongify(self)
-            float fpro = [progress floatValue];
-            self.progressLayer.opacity = 1;
-            self.progressLayer.width = kScreen_Width * fpro;
-            if (fpro >= 1.0) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    self.progressLayer.opacity = 0;
-                });
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    self.progressLayer.width = 0;
-                });
-            }
-        }];
-        _webView.navigationDelegate = self;
-        _webView.UIDelegate = self;
-        
     }
     return _webView;
 }
 
-- (CALayer *)progressLayer {
-    if (!_progressLayer) {
-        UIView *progress = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 2)];
-        progress.backgroundColor = [UIColor clearColor];
-        [self.view addSubview:progress];
-        _progressLayer = [CALayer layer];
-        _progressLayer.frame = CGRectMake(0, 0, 0, 2);
-        _progressLayer.backgroundColor = kColorNavTitle.CGColor;
-        [progress.layer addSublayer:self.progressLayer];
-    }
-    return _progressLayer;
-}
-
 - (void)bindViewModel {
     [super bindViewModel];
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSString *loadString = self.title;
+    self.loadingView.title = loadString;
+    self.navigationItem.titleView = self.loadingView;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    self.navigationItem.titleView = nil;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    self.navigationItem.titleView = nil;
 }
 
 @end

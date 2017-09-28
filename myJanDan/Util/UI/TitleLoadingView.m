@@ -85,7 +85,7 @@
 #pragma mark - set/get
 - (void)setTitle:(NSString *)title {
     if (_title == title) return;
-    _title = title;
+    _title = title ? : @"Loading...";
     self.titleLabel.text = _title;
     [self updateTitleLabelSize];
     [self setNeedsLayout];

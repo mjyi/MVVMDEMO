@@ -15,6 +15,34 @@
 static NSString* const FilteredKey = @"FilteredKey";
 static char imageProtocolRequestKey;
 
+FOUNDATION_STATIC_INLINE NSString* contentTypeForImageData(NSData *data) {
+    uint8_t c;
+    [data getBytes:&c length:1];
+    switch (c) {
+        case 0xFF:
+            return @"image/jpeg";
+        case 0x89:
+            return @"image/png";
+        case 0x47:
+            return @"image/gif";
+        case 0x49:
+        case 0x4D:
+            return @"image/tiff";
+        case 0x52:
+            // R as RIFF for WEBP
+            if ([data length] < 12) {
+                return nil;
+            }
+            NSString *testString = [[NSString alloc] initWithData:[data subdataWithRange:NSMakeRange(0, 12)] encoding:NSASCIIStringEncoding];
+            if ([testString hasPrefix:@"RIFF"] && [testString hasSuffix:@"WEBP"]) {
+                return @"image/webp";
+            }
+            return nil;
+    }
+    return nil;
+}
+
+
 @interface ImageHTTPProtocol ()
 
 @property(nonatomic, strong) MKNetworkRequest *imageRequest;
@@ -57,7 +85,9 @@ static char imageProtocolRequestKey;
     [NSURLProtocol setProperty:@YES forKey:FilteredKey inRequest:request];
     
     NSData *imageData = [imageCache getImageDataForKey:self.request.URL.absoluteString];
-    if (imageData) {
+    
+    
+    if (YYImageTypeUnknown != YYImageDetectType((__bridge CFDataRef _Nonnull)(imageData))) {
         NSURLResponse *rsp = [[NSURLResponse alloc] initWithURL:self.request.URL
                                                        MIMEType:contentTypeForImageData(imageData)
                                           expectedContentLength:imageData.length
@@ -105,34 +135,61 @@ static char imageProtocolRequestKey;
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+#pragma mark - session delegate
+//
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler {
+//    
+//    //处理重定向问题
+//    if (response != nil) {
+//        NSMutableURLRequest *redirectableRequest = [request mutableCopyWorkaround];
+//        TURLProtocolCacheData *cacheData = [[TURLProtocolCacheData alloc] init];
+//        cacheData.data = self.cacheData;
+//        cacheData.response = response;
+//        cacheData.redirectRequest = redirectableRequest;
+//        [NSKeyedArchiver archiveRootObject:cacheData toFile:[self p_filePathWithUrlString:request.URL.absoluteString]];
+//        
+//        [self.client URLProtocol:self wasRedirectedToRequest:redirectableRequest redirectResponse:response];
+//        completionHandler(request);
+//        
+//    } else {
+//        
+//        completionHandler(request);
+//    }
+//}
+//
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+//    
+//    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+//    // 允许处理服务器的响应，才会继续接收服务器返回的数据
+//    completionHandler(NSURLSessionResponseAllow);
+//    self.cacheData = [NSMutableData data];
+//    self.response = response;
+//}
+//
+//-  (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+//    //下载过程中
+//    [self.client URLProtocol:self didLoadData:data];
+//    [self.cacheData appendData:data];
+//    
+//}
+//
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+//    //    下载完成之后的处理
+//    
+//    if (error) {
+//        NSLog(@"error url = %@",task.currentRequest.URL.absoluteString);
+//        [self.client URLProtocol:self didFailWithError:error];
+//    } else {
+//        //将数据的缓存归档存入到本地文件中
+//        NSLog(@"ok url = %@",task.currentRequest.URL.absoluteString);
+//        TURLProtocolCacheData *cacheData = [[TURLProtocolCacheData alloc] init];
+//        cacheData.data = [self.cacheData copy];
+//        cacheData.addDate = [NSDate date];
+//        cacheData.response = self.response;
+//        [NSKeyedArchiver archiveRootObject:cacheData toFile:[self p_filePathWithUrlString:self.request.URL.absoluteString]];
+//        [self.client URLProtocolDidFinishLoading:self];
+//    }
+//}
+
+
 @end
-
-FOUNDATION_STATIC_INLINE NSString* contentTypeForImageData(NSData *data) {
-    uint8_t c;
-    [data getBytes:&c length:1];
-    switch (c) {
-        case 0xFF:
-            return @"image/jpeg";
-        case 0x89:
-            return @"image/png";
-        case 0x47:
-            return @"image/gif";
-        case 0x49:
-        case 0x4D:
-            return @"image/tiff";
-        case 0x52:
-            // R as RIFF for WEBP
-            if ([data length] < 12) {
-                return nil;
-            }
-            
-            NSString *testString = [[NSString alloc] initWithData:[data subdataWithRange:NSMakeRange(0, 12)] encoding:NSASCIIStringEncoding];
-            if ([testString hasPrefix:@"RIFF"] && [testString hasSuffix:@"WEBP"]) {
-                return @"image/webp";
-            }
-            
-            return nil;
-    }
-    return nil;
-}
-
