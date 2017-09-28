@@ -60,7 +60,6 @@
 		D88974681F53AF33002DB8A4 /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D88974671F53AF33002DB8A4 /* UIView+Common.m */; };
 		D88974711F541F8A002DB8A4 /* RequestRemoteSizeHost.m in Sources */ = {isa = PBXBuildFile; fileRef = D88974701F541F8A002DB8A4 /* RequestRemoteSizeHost.m */; };
 		D8A3929C1F7D0C230047E1FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8A3929B1F7D0C230047E1FA /* LaunchScreen.storyboard */; };
-		D8A392A21F7D0F820047E1FA /* TURLSessionProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A392A01F7D0F820047E1FA /* TURLSessionProtocol.m */; };
 		D8C194741F57BA0800546648 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C194721F57BA0800546648 /* SettingCell.m */; };
 		D8C194751F57BA0800546648 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8C194731F57BA0800546648 /* SettingCell.xib */; };
 		D8CAC51C1F73CFD6000F3D20 /* JUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAC51B1F73CFD6000F3D20 /* JUIHelper.m */; };
@@ -75,7 +74,6 @@
 		D8D871221F61383900F25005 /* TucaoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D871211F61383900F25005 /* TucaoModel.m */; };
 		D8E0DA371F70096800E8663C /* PicDetail_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E0DA361F70096800E8663C /* PicDetail_ViewController.m */; };
 		D8E0DA3A1F70116D00E8663C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E0DA391F70116D00E8663C /* DetailViewController.m */; };
-		D8E0DA481F724D6A00E8663C /* ImageHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E0DA471F724D6A00E8663C /* ImageHTTPProtocol.m */; };
 		D8E4C8311F65408600A4FF63 /* PostCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E4C82F1F65408600A4FF63 /* PostCommentCell.m */; };
 		D8E4C8321F65408600A4FF63 /* PostCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E4C8301F65408600A4FF63 /* PostCommentCell.xib */; };
 		D8EB1E441F57E04200861046 /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EB1E431F57E04200861046 /* SettingsHelper.m */; };
@@ -212,8 +210,6 @@
 		D889746F1F541F8A002DB8A4 /* RequestRemoteSizeHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestRemoteSizeHost.h; sourceTree = "<group>"; };
 		D88974701F541F8A002DB8A4 /* RequestRemoteSizeHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestRemoteSizeHost.m; sourceTree = "<group>"; };
 		D8A3929B1F7D0C230047E1FA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D8A392A01F7D0F820047E1FA /* TURLSessionProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TURLSessionProtocol.m; sourceTree = "<group>"; };
-		D8A392A11F7D0F820047E1FA /* TURLSessionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TURLSessionProtocol.h; sourceTree = "<group>"; };
 		D8C194711F57BA0800546648 /* SettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		D8C194721F57BA0800546648 /* SettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		D8C194731F57BA0800546648 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
@@ -231,8 +227,6 @@
 		D8E0DA361F70096800E8663C /* PicDetail_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicDetail_ViewController.m; sourceTree = "<group>"; };
 		D8E0DA381F70116D00E8663C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		D8E0DA391F70116D00E8663C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		D8E0DA461F724D6A00E8663C /* ImageHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHTTPProtocol.h; sourceTree = "<group>"; };
-		D8E0DA471F724D6A00E8663C /* ImageHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHTTPProtocol.m; sourceTree = "<group>"; };
 		D8E4C82E1F65408600A4FF63 /* PostCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentCell.h; sourceTree = "<group>"; };
 		D8E4C82F1F65408600A4FF63 /* PostCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentCell.m; sourceTree = "<group>"; };
 		D8E4C8301F65408600A4FF63 /* PostCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCommentCell.xib; sourceTree = "<group>"; };
@@ -515,14 +509,10 @@
 		D87BFB661F41564800A988EA /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D8A392A11F7D0F820047E1FA /* TURLSessionProtocol.h */,
-				D8A392A01F7D0F820047E1FA /* TURLSessionProtocol.m */,
 				D8F2EB621F7B3F1700F9DFC8 /* UI */,
 				D87BFB7C1F419F8100A988EA /* OC_Category */,
 				D83C5AB31F5CFFA60003EFE3 /* EmptySetManager.h */,
 				D83C5AB41F5CFFA60003EFE3 /* EmptySetManager.m */,
-				D8E0DA461F724D6A00E8663C /* ImageHTTPProtocol.h */,
-				D8E0DA471F724D6A00E8663C /* ImageHTTPProtocol.m */,
 				D8F2EB661F7B4C3700F9DFC8 /* TXUtilities.h */,
 				D8F2EB671F7B4C3700F9DFC8 /* TXUtilities.m */,
 			);
@@ -849,7 +839,6 @@
 				D8E0DA371F70096800E8663C /* PicDetail_ViewController.m in Sources */,
 				D876A0311F43EE8D00F22992 /* JDViewModel.m in Sources */,
 				D8762BD91F4825750055EB7A /* UIScrollView+SVInfiniteScrolling.m in Sources */,
-				D8A392A21F7D0F820047E1FA /* TURLSessionProtocol.m in Sources */,
 				D8762BE21F4829E10055EB7A /* NSString+Addition.m in Sources */,
 				D83E59F21F4AB3FC0011B0AA /* PicModel.m in Sources */,
 				D87BFBAC1F41A53400A988EA /* NSMutableDictionary+MKNKAdditions.m in Sources */,
@@ -885,7 +874,6 @@
 				D876A0491F441DCC00F22992 /* PostModel.m in Sources */,
 				D83C5AB51F5CFFA60003EFE3 /* EmptySetManager.m in Sources */,
 				D87BFBAF1F41A53400A988EA /* UIImageView+MKNKAdditions.m in Sources */,
-				D8E0DA481F724D6A00E8663C /* ImageHTTPProtocol.m in Sources */,
 				D87BFB821F41A19900A988EA /* UIImage+Common.m in Sources */,
 				D865EB5A1F40A4190000F6B8 /* main.m in Sources */,
 			);
