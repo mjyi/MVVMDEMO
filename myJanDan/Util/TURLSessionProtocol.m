@@ -293,6 +293,11 @@ FOUNDATION_STATIC_INLINE NSString* contentTypeForImageData(NSData *data) {
         NSLog(@"error url = %@",task.currentRequest.URL.absoluteString);
         [self.client URLProtocol:self didFailWithError:error];
     } else {
+        NSData *imgData = [self.cacheData copy];
+        [imageCache setImage:nil
+                   imageData:imgData
+                      forKey:self.request.URL.absoluteString
+                    withType:YYImageCacheTypeAll];
         
         //将数据的缓存归档存入到本地文件中
 //        NSLog(@"ok url = %@",task.currentRequest.URL.absoluteString);
