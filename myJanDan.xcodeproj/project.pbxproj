@@ -20,9 +20,9 @@
 		D83E59FA1F4AC6AF0011B0AA /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D83E59F91F4AC6AF0011B0AA /* BaseModel.m */; };
 		D83E5A2C1F4D4E960011B0AA /* Pic_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = D83E5A2A1F4D4E960011B0AA /* Pic_Cell.m */; };
 		D83E5A2D1F4D4E960011B0AA /* Pic_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D83E5A2B1F4D4E960011B0AA /* Pic_Cell.xib */; };
+		D862A16C1F7F8F8D0057AD58 /* TURLSessionProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D862A16A1F7F8F8D0057AD58 /* TURLSessionProtocol.m */; };
 		D865EB5A1F40A4190000F6B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D865EB591F40A4190000F6B8 /* main.m */; };
 		D865EB5D1F40A4190000F6B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D865EB5C1F40A4190000F6B8 /* AppDelegate.m */; };
-		D865EB631F40A4190000F6B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D865EB611F40A4190000F6B8 /* Main.storyboard */; };
 		D865EB651F40A4190000F6B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D865EB641F40A4190000F6B8 /* Assets.xcassets */; };
 		D865EB731F40A4190000F6B8 /* myJanDanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D865EB721F40A4190000F6B8 /* myJanDanTests.m */; };
 		D8762BA81F45B1D00055EB7A /* Post_DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8762BA71F45B1D00055EB7A /* Post_DetailViewController.m */; };
@@ -130,11 +130,12 @@
 		D83E5A291F4D4E960011B0AA /* Pic_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pic_Cell.h; sourceTree = "<group>"; };
 		D83E5A2A1F4D4E960011B0AA /* Pic_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pic_Cell.m; sourceTree = "<group>"; };
 		D83E5A2B1F4D4E960011B0AA /* Pic_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pic_Cell.xib; sourceTree = "<group>"; };
+		D862A16A1F7F8F8D0057AD58 /* TURLSessionProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TURLSessionProtocol.m; sourceTree = "<group>"; };
+		D862A16B1F7F8F8D0057AD58 /* TURLSessionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TURLSessionProtocol.h; sourceTree = "<group>"; };
 		D865EB551F40A4190000F6B8 /* myJanDan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myJanDan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D865EB591F40A4190000F6B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D865EB5B1F40A4190000F6B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D865EB5C1F40A4190000F6B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D865EB621F40A4190000F6B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D865EB641F40A4190000F6B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D865EB691F40A4190000F6B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D865EB6E1F40A4190000F6B8 /* myJanDanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myJanDanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,7 +340,6 @@
 				D865EB5C1F40A4190000F6B8 /* AppDelegate.m */,
 				D87BFB7B1F4194CC00A988EA /* JanDan-Prefix.pch */,
 				D865EB641F40A4190000F6B8 /* Assets.xcassets */,
-				D865EB611F40A4190000F6B8 /* Main.storyboard */,
 				D8A3929B1F7D0C230047E1FA /* LaunchScreen.storyboard */,
 				D865EB691F40A4190000F6B8 /* Info.plist */,
 				D8769FFE1F42814C00F22992 /* Helper */,
@@ -509,6 +509,8 @@
 		D87BFB661F41564800A988EA /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				D862A16B1F7F8F8D0057AD58 /* TURLSessionProtocol.h */,
+				D862A16A1F7F8F8D0057AD58 /* TURLSessionProtocol.m */,
 				D8F2EB621F7B3F1700F9DFC8 /* UI */,
 				D87BFB7C1F419F8100A988EA /* OC_Category */,
 				D83C5AB31F5CFFA60003EFE3 /* EmptySetManager.h */,
@@ -697,7 +699,6 @@
 				D83E5A2D1F4D4E960011B0AA /* Pic_Cell.xib in Resources */,
 				D8A3929C1F7D0C230047E1FA /* LaunchScreen.storyboard in Resources */,
 				D876A05C1F442C3A00F22992 /* PostItemCell.xib in Resources */,
-				D865EB631F40A4190000F6B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +840,7 @@
 				D8E0DA371F70096800E8663C /* PicDetail_ViewController.m in Sources */,
 				D876A0311F43EE8D00F22992 /* JDViewModel.m in Sources */,
 				D8762BD91F4825750055EB7A /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				D862A16C1F7F8F8D0057AD58 /* TURLSessionProtocol.m in Sources */,
 				D8762BE21F4829E10055EB7A /* NSString+Addition.m in Sources */,
 				D83E59F21F4AB3FC0011B0AA /* PicModel.m in Sources */,
 				D87BFBAC1F41A53400A988EA /* NSMutableDictionary+MKNKAdditions.m in Sources */,
@@ -896,17 +898,6 @@
 			targetProxy = D865EB6F1F40A4190000F6B8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D865EB611F40A4190000F6B8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D865EB621F40A4190000F6B8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D865EB751F40A4190000F6B8 /* Debug */ = {
